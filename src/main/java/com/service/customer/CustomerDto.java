@@ -1,7 +1,6 @@
 package com.service.customer;
 
-import com.payment.customer.entity.Customer;
-import java.io.Serializable;
+import com.service.customer.entity.Customer;
 
 /**
  * DTO for {@link Customer}
@@ -9,6 +8,6 @@ import java.io.Serializable;
 public record CustomerDto(
     String email,
     String name
-) implements Serializable {
+) {
 
 }

@@ -23,7 +23,7 @@ public class CustomerController {
 
   @PostMapping
   public ResponseEntity<CustomerDto> createCustomer(
-      @RequestBody CustomerDto customerDto
+      @RequestBody com.service.customer.CustomerDto customerDto
   ) {
     return ResponseEntity.ok(customerService.createCustomer(customerDto));
   }
@@ -37,7 +37,6 @@ public class CustomerController {
   public ResponseEntity<CustomerDto> getCustomerByEmail(
       @PathVariable String email
   ) {
-    // TODO: Implement the method in the service to get a customer by email
     return ResponseEntity.ok(customerService.getCustomerByEmail(email));
   }
 

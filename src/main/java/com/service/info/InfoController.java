@@ -1,22 +1,22 @@
-package com.service.payment.info;
+package com.service.info;
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController("/counter")
-public class CustomerController {
+public class InfoController {
 
   /**
    * The Customer service.
    */
-  private final CustomerService customerService;
+  private final InfoService infoService;
 
   /**
    * Instantiates a new Customer controller.
    *
    * @param service the service
    */
-  public CustomerController(final CustomerService service) {
-    this.customerService = service;
+  public InfoController(final InfoService service) {
+    this.infoService = service;
   }
 
 }

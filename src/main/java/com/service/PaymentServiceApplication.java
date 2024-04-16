@@ -1,10 +1,10 @@
-package com.service.payment;
+package com.service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringSimplePaymentServiceApplication {
+public class PaymentServiceApplication {
 
   /**
    * The main method.
@@ -12,6 +12,6 @@ public class SpringSimplePaymentServiceApplication {
    * @param args the input arguments
    */
   public static void main(final String[] args) {
-    SpringApplication.run(SpringSimplePaymentServiceApplication.class, args);
+    SpringApplication.run(PaymentServiceApplication.class, args);
   }
 }
