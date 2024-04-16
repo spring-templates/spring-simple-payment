@@ -1,6 +1,9 @@
 package com.service.payment;
 
+import com.service.payment.dto.PaymentRequestDto;
+import com.service.payment.dto.PaymentResponseDto;
 import java.util.List;
+import java.util.UUID;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/payment")
+@RequestMapping("/payments")
 public class PaymentController {
 
   private final PaymentService paymentService;
@@ -22,34 +25,34 @@ public class PaymentController {
   }
 
   @PostMapping
-  public ResponseEntity<PaymentDto> createPayment(
-      @RequestBody PaymentDto paymentDto
+  public ResponseEntity<PaymentResponseDto> createPayment(
+      @RequestBody PaymentRequestDto dto
   ) {
-    return ResponseEntity.ok(paymentService.createCustomer(paymentDto));
+    return ResponseEntity.ok(paymentService.createPayment(dto));
   }
 
   @GetMapping
-  public ResponseEntity<List<PaymentDto>> getAllPayments() {
-    return ResponseEntity.ok(paymentService.getAllCustomers());
+  public ResponseEntity<List<PaymentResponseDto>> getAllPayments() {
+    return ResponseEntity.ok(paymentService.getAllPayments());
   }
 
-  @GetMapping("/{email}")
-  public ResponseEntity<PaymentDto> getPaymentByEmail(
-      @PathVariable String email
+  @GetMapping("/{id}")
+  public ResponseEntity<PaymentResponseDto> getPaymentById(
+      @PathVariable UUID id
   ) {
-    return ResponseEntity.ok(paymentService.getCustomerByEmail(email));
+    return ResponseEntity.ok(paymentService.getPaymentById(id));
   }
 
-  @PutMapping("/{email}")
-  public ResponseEntity<PaymentDto> updatePayment(
-      @PathVariable String email, @RequestBody PaymentDto paymentDto
+  @PutMapping("/{id}")
+  public ResponseEntity<PaymentResponseDto> updatePayment(
+      @PathVariable UUID id, @RequestBody PaymentRequestDto dto
   ) {
-    return ResponseEntity.ok(paymentService.updateCustomer(email, paymentDto));
+    return ResponseEntity.ok(paymentService.updatePayment(id, dto));
   }
 
-  @DeleteMapping("/{email}")
-  public ResponseEntity<Void> deletePayment(@PathVariable String email) {
-    paymentService.deleteCustomer(email);
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deletePayment(@PathVariable UUID id) {
+    paymentService.deletePayment(id);
     return ResponseEntity.noContent().build();
   }
 }
