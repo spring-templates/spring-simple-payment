@@ -22,4 +22,9 @@ public class Name {
    * The last name.
    */
   private String lastName;
+
+  public static Name of(String name) {
+    String[] nameParts = name.split(" ");
+    return new Name(nameParts[0], nameParts[1]);
+  }
 }

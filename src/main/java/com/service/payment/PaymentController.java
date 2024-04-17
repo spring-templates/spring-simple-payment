@@ -2,14 +2,10 @@ package com.service.payment;
 
 import com.service.payment.dto.PaymentRequestDto;
 import com.service.payment.dto.PaymentResponseDto;
-import java.util.List;
-import java.util.UUID;
+import com.service.payment.dto.PaymentStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,35 +20,38 @@ public class PaymentController {
     this.paymentService = service;
   }
 
+  // 1. Payment request
   @PostMapping
-  public ResponseEntity<PaymentResponseDto> createPayment(
-      @RequestBody PaymentRequestDto dto
+  public ResponseEntity<PaymentResponseDto> pay(
+      @RequestBody PaymentRequestDto paymentRequestDto
   ) {
-    return ResponseEntity.ok(paymentService.createPayment(dto));
+    var result = paymentService.pay(paymentRequestDto);
+//    if (result == null) {
+//      return ResponseEntity.badRequest().build();
+//    }
+    return ResponseEntity.ok(result);
   }
 
-  @GetMapping
-  public ResponseEntity<List<PaymentResponseDto>> getAllPayments() {
-    return ResponseEntity.ok(paymentService.getAllPayments());
-  }
-
-  @GetMapping("/{id}")
-  public ResponseEntity<PaymentResponseDto> getPaymentById(
-      @PathVariable UUID id
+  // 2. Payment confirmation by redirect
+  @PostMapping("/confirm/{id}")
+  public ResponseEntity<PaymentResponseDto> confirm(
+      @PathVariable Long id
   ) {
-    return ResponseEntity.ok(paymentService.getPaymentById(id));
+    var result = paymentService.confirmPayment(id);
+    if (result == null) {
+      return ResponseEntity.notFound().build();
+    }
+    if (PaymentStatus.SUCCESS.equals(result.status())) {
+      return ResponseEntity.ok(result);
+    }
+    return ResponseEntity.badRequest().build();
   }
 
-  @PutMapping("/{id}")
-  public ResponseEntity<PaymentResponseDto> updatePayment(
-      @PathVariable UUID id, @RequestBody PaymentRequestDto dto
+  // 3. Payment cancellation
+  @PostMapping("/cancel/{id}")
+  public ResponseEntity<PaymentResponseDto> cancel(
+      @PathVariable Long id
   ) {
-    return ResponseEntity.ok(paymentService.updatePayment(id, dto));
-  }
-
-  @DeleteMapping("/{id}")
-  public ResponseEntity<Void> deletePayment(@PathVariable UUID id) {
-    paymentService.deletePayment(id);
-    return ResponseEntity.noContent().build();
+    return ResponseEntity.ok(paymentService.cancelPayment(id));
   }
 }

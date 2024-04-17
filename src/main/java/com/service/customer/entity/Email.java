@@ -25,11 +25,15 @@ public final class Email implements Serializable {
   @Column(name = "email_provider")
   private String provider;
 
+  public static Email of(final String email) {
+    String[] emailParts = email.split("@");
+    return new Email(emailParts[0], emailParts[1]);
+  }
+
   @Override
   public boolean equals(final Object obj) {
-    return this == obj || (obj instanceof Email email
-        && Objects.equals(id, email.id)
-        && Objects.equals(provider, email.provider));
+    return this == obj || (obj instanceof Email email && Objects.equals(
+        id, email.id) && Objects.equals(provider, email.provider));
   }
 
   @Override

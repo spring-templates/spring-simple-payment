@@ -1,53 +1,51 @@
 package com.service.payment.entity;
 
 import com.service.customer.entity.Customer;
+import com.service.payment.dto.PaymentRequestDto;
+import com.service.payment.dto.PaymentResponseDto;
+import com.service.payment.dto.PaymentStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
 import jakarta.persistence.OneToOne;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Payment {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @OneToOne
-  @JoinColumns(
-      {
-          @JoinColumn(name = "seller_email_id", referencedColumnName = "email_id"),
-          @JoinColumn(name = "seller_email_provider", referencedColumnName = "email_provider")
-      }
-  )
+  @OneToOne(fetch = jakarta.persistence.FetchType.LAZY, cascade = jakarta.persistence.CascadeType.ALL, optional = false)
+  @JoinColumn(nullable = false, unique = true)
   private Customer seller;
-  @OneToOne
-  @JoinColumns(
-      {
-          @JoinColumn(name = "buyer_email_id", referencedColumnName = "email_id"),
-          @JoinColumn(name = "buyer_email_provider", referencedColumnName = "email_provider")
-      }
-  )
+
+  @OneToOne(fetch = jakarta.persistence.FetchType.LAZY, cascade = jakarta.persistence.CascadeType.ALL, optional = false)
+  @JoinColumn(nullable = false, unique = true)
   private Customer buyer;
-  private PaymentMethod method;
 
-  public Customer getSeller() {
-    return seller;
+  private AbstractPayment method;
+
+  private PaymentStatus status;
+
+  public static Payment of(final PaymentRequestDto requestDto) {
+    Payment payment = new Payment();
+    payment.setSeller(Customer.of(requestDto.seller()));
+    payment.setBuyer(Customer.of(requestDto.buyer()));
+    payment.setMethod(requestDto.payment());
+    payment.setStatus(PaymentStatus.PENDING);
+    return payment;
   }
 
-  public void setSeller(Customer seller) {
-    this.seller = seller;
+  public PaymentResponseDto toDto() {
+    return new PaymentResponseDto(id, status);
   }
-
-  public Customer getBuyer() {
-    return buyer;
-  }
-
-  public void setBuyer(Customer buyer) {
-    this.buyer = buyer;
-  }
-
 }

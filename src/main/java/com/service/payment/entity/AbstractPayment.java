@@ -1,6 +1,6 @@
 package com.service.payment.entity;
 
-public enum PaymentMethod {
+public enum AbstractPayment {
   CREDIT_CARD,
   PAYPAL,
   IDEAL
