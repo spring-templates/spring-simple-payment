@@ -23,9 +23,13 @@ repositories {
 }
 
 @Suppress("SpellCheckingInspection") dependencies {
-    // spring-web-jpa-concurrency
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    // spring-service-payment
     implementation("org.springframework.boot:spring-boot-starter-web")
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+
+    // spring-concurrency-jpa
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
     runtimeOnly("com.mysql:mysql-connector-j")

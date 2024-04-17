@@ -16,26 +16,11 @@ services:
     env_file:
       - .env.local
     ports:
-      - "8081:8080"
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - private-subnet
+      - "8080:8080"
 
   mysql:
     <<: *mysql-template
-    hostname: prod
-    container_name: mysql-prod
+    hostname: dev
+    container_name: mysql-dev
     ports:
       - "3306:3306"
-    networks:
-      - private-subnet
-
-networks:
-  private-subnet: # private: 172.19.0.x
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.19.0.0/24

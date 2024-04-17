@@ -16,7 +16,7 @@ spring.jpa:
     generate_statistics: false
     id.new_generator_mappings: false
 
-# Initialize database strategy
+# DB Initialization Strategy
 spring.jpa.generate-ddl: true
 spring.jpa.hibernate.ddl-auto: create
 spring.sql.init.mode: never
