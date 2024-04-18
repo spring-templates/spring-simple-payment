@@ -2,7 +2,7 @@
 # https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html
 #
 
-# this is a example configuration file in test profile
+# this is an example configuration file in test profile
 # this should overrides base configuration with values of local settings
 
 # Database configuration
