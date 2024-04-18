@@ -8,7 +8,7 @@ x-mysql-template: &mysql-template
     timeout: 10s
     retries: 3
 
-name: dev-service-payment
+name: prod-service-payment
 services:
   spring:
     container_name: service-payment
@@ -21,9 +21,22 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+    networks:
+      - private-subnet
+
   mysql:
     <<: *mysql-template
-    hostname: dev
-    container_name: mysql-dev
+    hostname: prod
+    container_name: mysql-prod
     ports:
       - "3306:3306"
+    networks:
+      - private-subnet
+
+networks:
+  private-subnet: # private: 172.19.0.x
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.19.0.0/24

@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.service"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0-SNAPSHOT"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21
@@ -28,6 +28,7 @@ repositories {
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.5.0")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     developmentOnly("org.springframework.boot:spring-boot-starter-actuator")
+    developmentOnly("org.springframework.boot:spring-boot-docker-compose")
 
     // spring-concurrency-jpa
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
