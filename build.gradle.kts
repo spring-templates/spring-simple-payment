@@ -50,9 +50,22 @@ tasks.all {
     outputs.cacheIf { true }
 }
 
+fun Test.addActiveProfiles(profile: String) {
+    doFirst {
+        val activeProfiles = System.getProperty("spring.profiles.active")
+        val newActiveProfiles = if (activeProfiles.isNullOrBlank()) {
+            profile
+        } else {
+            "$activeProfiles,$profile"
+        }
+        systemProperty("spring.profiles.active", newActiveProfiles)
+    }
+}
+
 tasks {
     test {
         @Suppress("SpellCheckingInspection") jvmArgs("-Xshare:off", "-XX:+EnableDynamicAgentLoading")
+        addActiveProfiles("test")
         useJUnitPlatform()
         finalizedBy(jacocoTestReport)
     }

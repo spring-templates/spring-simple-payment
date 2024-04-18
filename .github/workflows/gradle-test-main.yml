@@ -6,33 +6,7 @@ on:
       - main
 
 jobs:
-  make_image_push_to_docker_hub:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Login to DockerHub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Set Docker tag
-        id: vars
-        run: echo "::set-output name=tag::${{ github.base_ref }}"
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:${{ steps.vars.outputs.tag }}
-
   build_test_and_coverage:
-    needs:
-      - make_image_push_to_docker_hub
     runs-on: 'ubuntu-latest'
     steps:
       - uses: actions/checkout@v4

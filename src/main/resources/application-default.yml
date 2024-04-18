@@ -15,7 +15,6 @@ spring.jpa:
     use_sql_comments: false
     generate_statistics: false
     id.new_generator_mappings: false
-    dialect: org.hibernate.dialect.MySQLDialect
 
 # DB Initialization Strategy
 spring.jpa.generate-ddl: true

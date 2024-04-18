@@ -3,7 +3,7 @@
 FROM bellsoft/liberica-openjdk-alpine:21 as builder
 LABEL maintainer="ooMia"
 COPY . .
-CMD ["./gradlew", "build", "--no-daemon"]
+CMD ["./gradlew", "build", "--parallel"]
 
 # Stage 2: Run the application
 FROM bellsoft/liberica-openjre-alpine:21 AS runner
