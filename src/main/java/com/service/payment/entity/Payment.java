@@ -1,8 +1,8 @@
 package com.service.payment.entity;
 
 import com.service.customer.entity.Customer;
-import com.service.payment.dto.PaymentRequestDto;
-import com.service.payment.dto.PaymentResponseDto;
+import com.service.payment.dto.PaymentInitialRequestDto;
+import com.service.payment.dto.PaymentStatusDto;
 import com.service.payment.dto.PaymentStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,7 +36,7 @@ public class Payment {
 
   private PaymentStatus status;
 
-  public static Payment of(final PaymentRequestDto requestDto) {
+  public static Payment of(final PaymentInitialRequestDto requestDto) {
     Payment payment = new Payment();
     payment.setSeller(Customer.of(requestDto.seller()));
     payment.setBuyer(Customer.of(requestDto.buyer()));
@@ -45,7 +45,7 @@ public class Payment {
     return payment;
   }
 
-  public PaymentResponseDto toDto() {
-    return new PaymentResponseDto(id, status);
+  public PaymentStatusDto toDto() {
+    return new PaymentStatusDto(id, status);
   }
 }

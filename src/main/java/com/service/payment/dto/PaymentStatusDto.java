@@ -1,6 +1,6 @@
 package com.service.payment.dto;
 
-public record PaymentResponseDto(
+public record PaymentStatusDto(
     Long paymentId,
     PaymentStatus status
 ) {

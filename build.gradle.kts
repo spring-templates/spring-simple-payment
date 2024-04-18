@@ -24,9 +24,10 @@ repositories {
 
 @Suppress("SpellCheckingInspection") dependencies {
     // spring-service-payment
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.5.0")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
-
 
     // spring-concurrency-jpa
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")

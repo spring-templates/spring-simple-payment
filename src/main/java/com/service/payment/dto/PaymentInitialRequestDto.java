@@ -4,7 +4,7 @@ import com.service.customer.CustomerRequestDto;
 import com.service.payment.entity.AbstractPayment;
 import java.net.URI;
 
-public record PaymentRequestDto(
+public record PaymentInitialRequestDto(
     CustomerRequestDto seller,
     CustomerRequestDto buyer,
     AbstractPayment payment,

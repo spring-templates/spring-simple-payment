@@ -109,7 +109,7 @@
       value="separate_lines_if_wrapped"/>
     <setting
       id="org.eclipse.jdt.core.formatter.parentheses_positions_in_annotation"
-      value="preserve_positions"/>
+      value="separate_lines_if_not_empty"/>
     <setting
       id="org.eclipse.jdt.core.formatter.parentheses_positions_in_lambda_declaration"
       value="separate_lines_if_wrapped"/>
@@ -118,7 +118,7 @@
       value="preserve_positions"/>
     <setting
       id="org.eclipse.jdt.core.formatter.parentheses_positions_in_for_statment"
-      value="preserve_positions"/>
+      value="separate_lines"/>
     <setting
       id="org.eclipse.jdt.core.formatter.parentheses_positions_in_switch_statement"
       value="preserve_positions"/>
@@ -856,7 +856,7 @@
       id="org.eclipse.jdt.core.formatter.alignment_for_parameters_in_method_declaration"
       value="16"/>
     <setting id="org.eclipse.jdt.core.formatter.alignment_for_enum_constants"
-      value="16"/>
+      value="49"/>
     <setting
       id="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_enum_constant"
       value="16"/>
@@ -873,7 +873,7 @@
       value="16"/>
     <setting
       id="org.eclipse.jdt.core.formatter.alignment_for_selector_in_method_invocation"
-      value="16"/>
+      value="80"/>
     <setting
       id="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_explicit_constructor_call"
       value="16"/>

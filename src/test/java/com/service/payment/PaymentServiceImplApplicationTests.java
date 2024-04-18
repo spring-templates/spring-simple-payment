@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 @SpringBootTest
 @ContextConfiguration(classes = PaymentServiceApplication.class)
-class PaymentServiceApplicationTests {
+class PaymentServiceImplApplicationTests {
 
   @Test
   @SuppressWarnings("EmptyMethod")

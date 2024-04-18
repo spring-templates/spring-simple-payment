@@ -31,13 +31,13 @@ public final class Email implements Serializable {
   }
 
   @Override
-  public boolean equals(final Object obj) {
-    return this == obj || (obj instanceof Email email && Objects.equals(
-        id, email.id) && Objects.equals(provider, email.provider));
+  public int hashCode() {
+    return Objects.hash(id, provider);
   }
 
   @Override
-  public int hashCode() {
-    return Objects.hash(id, provider);
+  public boolean equals(final Object obj) {
+    return this == obj || (obj instanceof Email email && Objects.equals(
+        id, email.id) && Objects.equals(provider, email.provider));
   }
 }
