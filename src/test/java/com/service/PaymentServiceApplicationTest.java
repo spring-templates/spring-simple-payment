@@ -1,13 +1,12 @@
-package com.service.payment;
+package com.service;
 
-import com.service.PaymentServiceApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
 @SpringBootTest
 @ContextConfiguration(classes = PaymentServiceApplication.class)
-class PaymentServiceImplApplicationTests {
+class PaymentServiceApplicationTest {
 
   @Test
   @SuppressWarnings("EmptyMethod")

@@ -8,6 +8,7 @@ x-mysql-template: &mysql-template
     timeout: 10s
     retries: 3
 
+name: prod-service-payment
 services:
   spring:
     container_name: service-payment
