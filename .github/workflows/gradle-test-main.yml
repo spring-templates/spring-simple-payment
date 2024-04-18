@@ -11,9 +11,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - # Add support for more platforms with QEMU (optional)
-        # https://github.com/docker/setup-qemu-action
-        name: Set up QEMU
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -24,7 +22,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Set Docker tag
         id: vars
-        run: echo "::set-output name=tag::${GITHUB_REF/refs\/heads\//}"
+        run: echo "::set-output name=tag::${{ github.head_ref }}"
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
