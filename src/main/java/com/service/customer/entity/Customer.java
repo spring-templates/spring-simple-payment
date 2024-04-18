@@ -16,16 +16,31 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Customer {
 
+  /**
+   * The customer ID.
+   */
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  Long id;
+  private Long id;
 
+  /**
+   * The customer email.
+   */
   @Embedded
   private Email email;
 
+  /**
+   * The customer name.
+   */
   @Embedded
   private Name name;
 
+  /**
+   * Create a new customer.
+   *
+   * @param seller customer request
+   * @return customer
+   */
   public static Customer of(final CustomerRequestDto seller) {
     Customer customer = new Customer();
     customer.setEmail(Email.of(seller.email()));

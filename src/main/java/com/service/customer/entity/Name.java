@@ -23,7 +23,13 @@ public class Name {
    */
   private String lastName;
 
-  public static Name of(String name) {
+  /**
+   * Create a new name.
+   *
+   * @param name the name
+   * @return the name
+   */
+  public static Name of(final String name) {
     String[] nameParts = name.split(" ");
     return new Name(nameParts[0], nameParts[1]);
   }

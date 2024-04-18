@@ -25,6 +25,12 @@ public final class Email implements Serializable {
   @Column(name = "email_provider")
   private String provider;
 
+  /**
+   * Parse email from string.
+   *
+   * @param email email string
+   * @return email
+   */
   public static Email of(final String email) {
     String[] emailParts = email.split("@");
     return new Email(emailParts[0], emailParts[1]);

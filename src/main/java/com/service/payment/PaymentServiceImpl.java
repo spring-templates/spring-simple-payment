@@ -13,8 +13,16 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Slf4j
 public class PaymentServiceImpl implements PaymentService {
 
+  /**
+   * Payment repository.
+   */
   private final PaymentRepository repository;
 
+  /**
+   * Constructor.
+   *
+   * @param paymentRepository payment repository
+   */
   public PaymentServiceImpl(final PaymentRepository paymentRepository) {
     this.repository = paymentRepository;
   }
@@ -54,9 +62,10 @@ public class PaymentServiceImpl implements PaymentService {
         .bodyValue(response)
         .retrieve()
         .bodyToMono(PaymentStatusDto.class)
-        .subscribe(result -> {
-          log.info("Response: {}", result);
-        }, Throwable::printStackTrace, () -> log.info("Request completed"));
+        .subscribe(
+            result -> log.info("Response: {}", result),
+            Throwable::printStackTrace
+        );
   }
 
   /**

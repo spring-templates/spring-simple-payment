@@ -2,8 +2,8 @@ package com.service.payment.entity;
 
 import com.service.customer.entity.Customer;
 import com.service.payment.dto.PaymentInitialRequestDto;
-import com.service.payment.dto.PaymentStatusDto;
 import com.service.payment.dto.PaymentStatus;
+import com.service.payment.dto.PaymentStatusDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,22 +20,53 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Payment {
 
+  /**
+   * The payment ID.
+   */
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @OneToOne(fetch = jakarta.persistence.FetchType.LAZY, cascade = jakarta.persistence.CascadeType.ALL, optional = false)
+  /**
+   * The customer information of seller.
+   *
+   * @see com.service.customer.entity.Customer
+   */
+
+  @OneToOne(fetch = jakarta.persistence.FetchType.LAZY, optional = false)
   @JoinColumn(nullable = false, unique = true)
   private Customer seller;
 
-  @OneToOne(fetch = jakarta.persistence.FetchType.LAZY, cascade = jakarta.persistence.CascadeType.ALL, optional = false)
+  /**
+   * The customer information of buyer.
+   *
+   * @see com.service.customer.entity.Customer
+   */
+  @OneToOne(fetch = jakarta.persistence.FetchType.LAZY, optional = false)
   @JoinColumn(nullable = false, unique = true)
   private Customer buyer;
 
+  /**
+   * The payment method.
+   *
+   * @see com.service.payment.entity.AbstractPayment
+   */
   private AbstractPayment method;
 
+  /**
+   * The payment status.
+   *
+   * @see com.service.payment.dto.PaymentStatus
+   */
   private PaymentStatus status;
 
+  /**
+   * Create payment from request DTO.
+   *
+   * @param requestDto initial payment request DTO
+   *                   {@link com.service.payment.dto.PaymentInitialRequestDto}
+   * @return payment entity
+   */
   public static Payment of(final PaymentInitialRequestDto requestDto) {
     Payment payment = new Payment();
     payment.setSeller(Customer.of(requestDto.seller()));
@@ -45,6 +76,11 @@ public class Payment {
     return payment;
   }
 
+  /**
+   * Convert payment entity to DTO.
+   *
+   * @return payment status DTO {@link com.service.payment.dto.PaymentStatusDto}
+   */
   public PaymentStatusDto toDto() {
     return new PaymentStatusDto(id, status);
   }
