@@ -22,12 +22,15 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Set Docker tag
+        id: vars
+        run: echo "::set-output name=tag::${GITHUB_REF/refs\/heads\//}"
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:${{ github.ref_name }}/refs/heads/-/g
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:${{ steps.vars.outputs.tag }}
   build_test_and_coverage:
     needs:
       - make_image_push_to_docker_hub
