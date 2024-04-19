@@ -14,7 +14,7 @@ services:
     container_name: service-payment
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: dev.Dockerfile
     env_file:
       - .env.local
     ports:
