@@ -12,26 +12,21 @@ name: prod-service-payment
 services:
   spring:
     container_name: service-payment
-    build:
-      context: .
+    image: oomia/service-payment:latest
     env_file:
       - .env.local
     ports:
-      - "8081:8080"
+      - "8080:8080"
     depends_on:
       mysql:
         condition: service_healthy
-    networks:
-      - private-subnet
 
   mysql:
     <<: *mysql-template
-    hostname: prod
+    hostname: mysql
     container_name: mysql-prod
-    ports:
-      - "3306:3306"
-    networks:
-      - private-subnet
+    expose:
+      - "3306"
 
 networks:
   private-subnet: # private: 172.19.0.x
