@@ -1,6 +1,6 @@
-.github
+../.github
 .idea
-.env.example
+../.env.example
 .gitignore
 README.md
 .gitmessage

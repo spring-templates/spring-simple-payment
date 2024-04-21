@@ -856,7 +856,7 @@
       id="org.eclipse.jdt.core.formatter.alignment_for_parameters_in_method_declaration"
       value="16"/>
     <setting id="org.eclipse.jdt.core.formatter.alignment_for_enum_constants"
-      value="49"/>
+      value="16"/>
     <setting
       id="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_enum_constant"
       value="16"/>
