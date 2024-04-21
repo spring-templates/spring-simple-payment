@@ -1,6 +1,8 @@
 # 📖 (서비스 타이틀)
 
-![readme_mockup2](https://user-images.githubusercontent.com/112460466/210706312-6a44b60d-a42e-4210-b334-9e5983f70fb3.png)
+![image](https://github.com/spring-templates/spring-simple-payment/assets/96914905/99eb3687-37e5-4960-8bf7-78a519f0661f)
+
+
 
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-ED8B00?logoColor=white)
