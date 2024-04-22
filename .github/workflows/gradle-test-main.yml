@@ -20,10 +20,9 @@ jobs:
           key: gradle-${{ hashFiles('**/*gradle*') }}
           restore-keys: gradle-
 
-      - name: Grant execute permission for gradlew
-        run: cd spring && chmod +x gradlew
       - name: Run gradlew clean test on main
-        run: ./gradlew clean test
+        run: chmod +x gradlew &&  ./gradlew clean test
+        working-directory: spring
 
       - name: Upload test coverage to Codecov.io
         uses: codecov/codecov-action@v4
