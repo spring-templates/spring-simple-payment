@@ -4,6 +4,7 @@ spring/*
 !spring/build/
 !spring/gradle/
 !spring/src/
+!spring/Dockerfile
 !spring/gradlew.bat
 !spring/build.gradle.kts
 !spring/dumpJsa.gradle.kts
