@@ -8,6 +8,8 @@ on:
 
 jobs:
   build_and_test_ubuntu:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
