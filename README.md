@@ -12,6 +12,8 @@
 ![Codecov](https://img.shields.io/badge/Codecov-F01F7A?logo=codecov&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
 
+[![codecov](https://codecov.io/gh/spring-templates/spring-simple-payment/graph/badge.svg?token=tGi5xmvIhW)](https://codecov.io/gh/spring-templates/spring-simple-payment)
+
 - 배포 URL :
 - Test ID : readme@test.com
 - Test PW : 123123
