@@ -4,6 +4,7 @@ import com.service.customer.entity.Customer;
 import com.service.payment.dto.PaymentInitialRequestDto;
 import com.service.payment.dto.PaymentStatus;
 import com.service.payment.dto.PaymentStatusDto;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,7 +34,11 @@ public class Payment {
    * @see com.service.customer.entity.Customer
    */
 
-  @OneToOne(fetch = jakarta.persistence.FetchType.LAZY, optional = false)
+  @OneToOne(
+      fetch = jakarta.persistence.FetchType.LAZY,
+      cascade = CascadeType.PERSIST,
+      optional = false
+  )
   @JoinColumn(nullable = false, unique = true)
   private Customer seller;
 
@@ -42,7 +47,11 @@ public class Payment {
    *
    * @see com.service.customer.entity.Customer
    */
-  @OneToOne(fetch = jakarta.persistence.FetchType.LAZY, optional = false)
+  @OneToOne(
+      fetch = jakarta.persistence.FetchType.LAZY,
+      cascade = CascadeType.PERSIST,
+      optional = false
+  )
   @JoinColumn(nullable = false, unique = true)
   private Customer buyer;
 

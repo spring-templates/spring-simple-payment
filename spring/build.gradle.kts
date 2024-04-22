@@ -26,9 +26,11 @@ repositories {
     // spring-service-payment
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.5.0")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
-    developmentOnly("org.springframework.boot:spring-boot-starter-actuator")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+    testImplementation("org.testcontainers:mysql")
+    testImplementation("org.testcontainers:junit-jupiter")
 
     // spring-concurrency-jpa
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -50,22 +52,9 @@ tasks.all {
     outputs.cacheIf { true }
 }
 
-fun Test.addActiveProfiles(profile: String) {
-    doFirst {
-        val activeProfiles = System.getProperty("spring.profiles.active")
-        val newActiveProfiles = if (activeProfiles.isNullOrBlank()) {
-            profile
-        } else {
-            "$activeProfiles,$profile"
-        }
-        systemProperty("spring.profiles.active", newActiveProfiles)
-    }
-}
-
 tasks {
     test {
         @Suppress("SpellCheckingInspection") jvmArgs("-Xshare:off", "-XX:+EnableDynamicAgentLoading")
-        addActiveProfiles("test")
         useJUnitPlatform()
         finalizedBy(jacocoTestReport)
     }

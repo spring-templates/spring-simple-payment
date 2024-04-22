@@ -1,3 +1,14 @@
-.idea
+### Spring Initializr ###
+HELP.md
+
+### Gradle ###
 .gradle
-**.env**
+
+### IDE ###
+.idea
+.vscode
+.jpb
+
+# env files
+**env**
+!global.env

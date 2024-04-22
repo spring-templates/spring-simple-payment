@@ -2,15 +2,7 @@
 # https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html
 #
 
-# Core configuration
-spring.threads.virtual.enabled: true
-
-# Database configuration
-## HikariCP configuration
-spring.datasource:
-  hikari.transaction-isolation: TRANSACTION_READ_COMMITTED
-
-# @Overrides
+## @Overrides: default
 # JPA configuration
 spring.jpa:
   open-in-view: false
@@ -22,10 +14,26 @@ spring.jpa:
     generate_statistics: true
     id.new_generator_mappings: true
 
+## @Overrides: default
+# DB Initialization Strategy
+spring.jpa.generate-ddl: false
+spring.jpa.hibernate.ddl-auto: update
+spring.sql.init.mode: never
+
+# Core configuration
+spring.threads.virtual.enabled: true
+
+# Database configuration
+## HikariCP configuration
+spring.datasource:
+  hikari.transaction-isolation: TRANSACTION_READ_COMMITTED
+
 # Docker configuration
-spring:
-  docker:
-    compose:
-      file: spring/docker-compose.dev.yaml
-      profiles:
-        active: dev
+spring.docker.compose:
+  file: spring/docker-compose.dev.yaml
+  profiles.active: dev
+
+# Logging configuration
+logging.level:
+  web: DEBUG
+  sql: DEBUG

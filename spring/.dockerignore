@@ -1,8 +1,0 @@
-*
-!gradle/
-!src/
-!gradlew.bat
-!build.gradle.kts
-!dumpJsa.gradle.kts
-!settings.gradle.kts
-!gradlew

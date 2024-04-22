@@ -1,65 +1,19 @@
-x-mysql-template: &mysql-template
-  image: mysql:latest
-  env_file:
-    - .env.local
-  healthcheck:
-    test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-    interval: 20s
-    timeout: 10s
-    retries: 3
-
-name: service-payment
+## Docker Compose for Development Environment
+# Initiate the Spring Boot application using the `dev` profile.
+#
+name: dev-payment
 services:
-  spring-dev:
+  db:
+    image: mysql:latest
     profiles: [ "dev" ]
-    container_name: service-payment-dev
-    build:
-      context: .
-      dockerfile: dev.Dockerfile
-    env_file:
-      - .env.local
-    ports:
-      - "8081:8080"
-    depends_on:
-      mysql-dev:
-        condition: service_healthy
-
-  mysql-dev:
-    <<: *mysql-template
-    profiles: [ "dev" ]
-    hostname: mysql
-    container_name: mysql-dev
+    hostname: payment
+    container_name: db-payment-dev
     ports:
       - "3306:3306"
-
-  spring-prod:
-    profiles: [ "prod" ]
-    container_name: service-payment-prod
-    image: oomia/service-payment:latest
     env_file:
       - .env.local
-    ports:
-      - "8080:8080"
-    depends_on:
-      mysql-prod:
-        condition: service_healthy
-    networks:
-      - private-subnet
-
-  mysql-prod:
-    <<: *mysql-template
-    profiles: [ "prod" ]
-    hostname: mysql
-    container_name: mysql-prod
-    expose:
-      - "3306"
-    networks:
-      - private-subnet
-
-networks:
-  private-subnet: # private: 172.19.0.x
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.19.0.0/24
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3

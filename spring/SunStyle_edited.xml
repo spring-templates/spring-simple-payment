@@ -873,7 +873,7 @@
       value="16"/>
     <setting
       id="org.eclipse.jdt.core.formatter.alignment_for_selector_in_method_invocation"
-      value="80"/>
+      value="48"/>
     <setting
       id="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_explicit_constructor_call"
       value="16"/>
@@ -984,7 +984,7 @@
       value="49"/>
     <setting
       id="org.eclipse.jdt.core.formatter.alignment_for_arguments_in_annotation"
-      value="0"/>
+      value="80"/>
     <setting id="org.eclipse.jdt.core.formatter.alignment_for_module_statements"
       value="0"/>
     <setting id="org.eclipse.jdt.core.formatter.comment.line_length"

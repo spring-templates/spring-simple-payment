@@ -2,27 +2,50 @@ x-mysql-template: &mysql-template
   image: mysql:latest
   healthcheck:
     test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
-    interval: 20s
+    interval: 10s
     timeout: 10s
     retries: 3
 
+
+# docker compose
+#  --env-file global.env
+#  -f docker-compose.prod.yaml
+# up -d
 name: service-payment
 services:
-  spring:
+  payment:
     container_name: service-payment
-    image: oomia/service-payment:latest
-    ports:
-      - "8080:8080"
+    build:
+      context: .
+      dockerfile: spring/Dockerfile
+    ports: [ "8080:8080" ]
+    environment:
+      MYSQL_SERVER: ${PAYMENT_MYSQL_HOSTNAME:?error}
+      MYSQL_ROOT_PASSWORD: ${PAYMENT_MYSQL_ROOT_PASSWORD:?error}
+      MYSQL_DATABASE: ${PAYMENT_MYSQL_DATABASE:?error}
+      MYSQL_USER: ${PAYMENT_MYSQL_USER:?error}
+      MYSQL_PASSWORD: ${PAYMENT_MYSQL_PASSWORD:?error}
+    networks: [ private-subnet ]
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3
     depends_on:
-      mysql:
+      db:
         condition: service_healthy
 
-  mysql:
+  db:
     <<: *mysql-template
-    hostname: mysql
-    container_name: mysql
-    expose:
-      - "3306"
+    hostname: payment
+    container_name: db-payment-prod
+    expose: [ "3306", "33060" ]
+    environment:
+      MYSQL_ROOT_PASSWORD: ${PAYMENT_MYSQL_ROOT_PASSWORD:?error}
+      MYSQL_DATABASE: ${PAYMENT_MYSQL_DATABASE:?error}
+      MYSQL_USER: ${PAYMENT_MYSQL_USER:?error}
+      MYSQL_PASSWORD: ${PAYMENT_MYSQL_PASSWORD:?error}
+    networks: [ private-subnet ]
 
 networks:
   private-subnet: # private: 172.19.0.x

@@ -1,0 +1,13 @@
+*
+!spring
+spring/*
+!spring/build/
+!spring/gradle/
+!spring/src/
+!spring/gradlew.bat
+!spring/build.gradle.kts
+!spring/dumpJsa.gradle.kts
+!spring/settings.gradle.kts
+!spring/gradlew
+!spring/docker-compose.dev.yaml
+!spring/tag-image

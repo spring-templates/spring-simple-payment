@@ -17,14 +17,6 @@ spring.jpa:
     id.new_generator_mappings: false
 
 # DB Initialization Strategy
-spring.jpa.generate-ddl: true
-spring.jpa.hibernate.ddl-auto: create
+spring.jpa.generate-ddl: false
+spring.jpa.hibernate.ddl-auto: update
 spring.sql.init.mode: never
-
-# Docker configuration
-spring:
-  docker:
-    compose:
-      file: docker-compose.prod.yaml
-      profiles:
-        active: prod

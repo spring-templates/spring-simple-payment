@@ -1,5 +1,4 @@
 /**
- * This package contains classes that demonstrate the use of concurrency in
- * Java.
+ * This package contains the test classes for the service layer.
  */
 package com.service;
