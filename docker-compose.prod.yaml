@@ -1,20 +1,16 @@
 x-mysql-template: &mysql-template
   image: mysql:latest
-  env_file:
-    - .env.local
   healthcheck:
     test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
     interval: 20s
     timeout: 10s
     retries: 3
 
-name: prod-service-payment
+name: service-payment
 services:
   spring:
     container_name: service-payment
     image: oomia/service-payment:latest
-    env_file:
-      - .env.local
     ports:
       - "8080:8080"
     depends_on:
@@ -24,7 +20,7 @@ services:
   mysql:
     <<: *mysql-template
     hostname: mysql
-    container_name: mysql-prod
+    container_name: mysql
     expose:
       - "3306"
 

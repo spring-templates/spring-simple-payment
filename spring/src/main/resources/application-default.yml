@@ -21,3 +21,10 @@ spring.jpa.generate-ddl: true
 spring.jpa.hibernate.ddl-auto: create
 spring.sql.init.mode: never
 
+# Docker configuration
+spring:
+  docker:
+    compose:
+      file: docker-compose.prod.yaml
+      profiles:
+        active: prod
