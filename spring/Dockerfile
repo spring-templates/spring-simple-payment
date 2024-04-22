@@ -11,7 +11,7 @@ LABEL maintainer="ooMia"
 WORKDIR /spring
 COPY /spring .
 RUN dos2unix gradlew
-RUN sh gradlew build -x test --build-cache --parallel --no-daemon
+RUN sh gradlew build -x test --parallel --no-daemon
 
 # Stage 3: Run the application
 FROM bellsoft/liberica-openjre-alpine:21 AS runner
