@@ -1,9 +1,8 @@
-../.github
-.idea
-../.env.example
-.gitignore
-README.md
-.gitmessage
-LICENSE
-SunStyle_edited.xml
-codecov.yml
+*
+!gradle/
+!src/
+!gradlew.bat
+!build.gradle.kts
+!dumpJsa.gradle.kts
+!settings.gradle.kts
+!gradlew

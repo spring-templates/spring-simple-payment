@@ -70,21 +70,12 @@
 - Windows CMD에서 `tree /F | clip` 명령어 사용
 
 ```
-spring-simple-payment\spring
-│  .dockerignore
+spring-simple-payment
+│
 │  .gitignore
-│  .gitmessage
-│  build.gradle.kts
-│  codecov.yml
-│  dev.Dockerfile
-│  Dockerfile
-│  dumpJsa.gradle.kts
-│  gradlew
-│  gradlew.bat
-│  LICENSE
+│  docker-compose.prod.yaml
+│  docker-compose.yaml
 │  README.md
-│  settings.gradle.kts
-│  SunStyle_edited.xml
 │  
 ├─.github
 │  │  PULL_REQUEST_TEMPLATE.md
@@ -97,64 +88,79 @@ spring-simple-payment\spring
 │  └─workflows
 │          docker-publish.yml
 │          gradle-test-main.yml
-│          gradle-test.yml          
-│          
-├─gradle
-│  └─wrapper
-│          gradle-wrapper.jar
-│          gradle-wrapper.properties
-│          
-└─src
-    ├─main
-    │  ├─java
-    │  │  └─com
-    │  │      └─service
-    │  │          │  package-info.java
-    │  │          │  PaymentServiceApplication.java
-    │  │          │  
-    │  │          ├─customer
-    │  │          │  │  CustomerRequestDto.java
-    │  │          │  │  package-info.java
-    │  │          │  │  
-    │  │          │  └─entity
-    │  │          │          Customer.java
-    │  │          │          Email.java
-    │  │          │          Name.java
-    │  │          │          package-info.java
-    │  │          │          
-    │  │          └─payment
-    │  │              │  package-info.java
-    │  │              │  PaymentController.java
-    │  │              │  PaymentRepository.java
-    │  │              │  PaymentService.java
-    │  │              │  PaymentServiceImpl.java
-    │  │              │  
-    │  │              ├─dto
-    │  │              │      package-info.java
-    │  │              │      PaymentInitialRequestDto.java
-    │  │              │      PaymentStatus.java
-    │  │              │      PaymentStatusDto.java
-    │  │              │      
-    │  │              └─entity
-    │  │                      AbstractPayment.java
-    │  │                      package-info.java
-    │  │                      Payment.java
-    │  │                      
-    │  └─resources
-    │          application-default.yml
-    │          application-dev.yml
-    │          application-init-sql.yml
-    │          application-test.yml
-    │          application.yml
-    │          data.sql
-    │          schema.sql
+│          gradle-test.yml
+│      
+└─spring
+    │  .dockerignore
+    │  .gitignore
+    │  .gitmessage
+    │  build.gradle.kts
+    │  codecov.yml
+    │  dev.Dockerfile
+    │  Dockerfile
+    │  dumpJsa.gradle.kts
+    │  gradlew
+    │  gradlew.bat
+    │  LICENSE
+    │  settings.gradle.kts
+    │  SunStyle_edited.xml
+    │  
+    ├─gradle
+    │  └─wrapper
+    │          gradle-wrapper.jar
+    │          gradle-wrapper.properties
     │          
-    └─test
-        └─java
-            └─com
-                └─service
-                        package-info.java
-                        PaymentServiceApplicationTest.java
+    └─src
+        ├─main
+        │  ├─java
+        │  │  └─com
+        │  │      └─service
+        │  │          │  package-info.java
+        │  │          │  PaymentServiceApplication.java
+        │  │          │  
+        │  │          ├─customer
+        │  │          │  │  CustomerRequestDto.java
+        │  │          │  │  package-info.java
+        │  │          │  │  
+        │  │          │  └─entity
+        │  │          │          Customer.java
+        │  │          │          Email.java
+        │  │          │          Name.java
+        │  │          │          package-info.java
+        │  │          │          
+        │  │          └─payment
+        │  │              │  package-info.java
+        │  │              │  PaymentController.java
+        │  │              │  PaymentRepository.java
+        │  │              │  PaymentService.java
+        │  │              │  PaymentServiceImpl.java
+        │  │              │  
+        │  │              ├─dto
+        │  │              │      package-info.java
+        │  │              │      PaymentInitialRequestDto.java
+        │  │              │      PaymentStatus.java
+        │  │              │      PaymentStatusDto.java
+        │  │              │      
+        │  │              └─entity
+        │  │                      AbstractPayment.java
+        │  │                      package-info.java
+        │  │                      Payment.java
+        │  │                      
+        │  └─resources
+        │          application-default.yml
+        │          application-dev.yml
+        │          application-init-sql.yml
+        │          application-test.yml
+        │          application.yml
+        │          data.sql
+        │          schema.sql
+        │          
+        └─test
+            └─java
+                └─com
+                    └─service
+                            package-info.java
+                            PaymentServiceApplicationTest.java
 ```
 
 <br>
