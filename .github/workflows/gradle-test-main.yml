@@ -19,21 +19,12 @@ jobs:
           path: ~/.gradle/caches
           key: gradle-${{ hashFiles('**/*gradle*') }}
           restore-keys: gradle-
-      - name: Generate .env.local file
-        run: |
-          echo "MYSQL_SERVER=${{ secrets.MYSQL_SERVER }}" >> .env.local
-          echo "MYSQL_DATABASE=${{ secrets.MYSQL_DATABASE }}" >> .env.local
-          echo "MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}" >> .env.local
-          echo "MYSQL_USER=${{ secrets.MYSQL_USER }}" >> .env.local
-          echo "MYSQL_PASSWORD=${{ secrets.MYSQL_PASSWORD }}" >> .env.local
-      - name: Docker Compose Up
-        run: docker compose up -d
-      - name: Docker Compose Up
-        run: docker compose up -d
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Run gradlew clean test on main
         run: ./gradlew clean test
+
       - name: Upload test coverage to Codecov.io
         uses: codecov/codecov-action@v4
         with:
