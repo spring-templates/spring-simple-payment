@@ -8,7 +8,7 @@ RUN apk add dos2unix
 # Stage 2: Build the application
 FROM base AS builder
 LABEL maintainer="ooMia"
-COPY /spring .
+COPY spring .
 RUN ls -la
 RUN dos2unix gradlew
 RUN sh gradlew build -x test --parallel
