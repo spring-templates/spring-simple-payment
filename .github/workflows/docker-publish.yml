@@ -34,9 +34,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: print ls
-        run: ls -la
-
       # Install the cosign tool except on PR
       - name: Install cosign
         if: github.event_name != 'pull_request'
@@ -44,13 +41,7 @@ jobs:
 
       - uses: docker/setup-qemu-action@v3
 
-      - name: print ls
-        run: ls -la
-
       - uses: docker/setup-buildx-action@v3
-
-      - name: print ls
-        run: ls -la
 
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
@@ -62,14 +53,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: print ls
-        run: ls -la
-
       - name: Set IMAGE_NAME
         run: echo "IMAGE_NAME=$(echo ${{ github.repository }} | cut -d '/' -f 2)" >> $GITHUB_ENV
-
-      - name: print ls
-        run: ls -la
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
@@ -92,8 +77,6 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
 
       - name: print ls
         run: ls -la
