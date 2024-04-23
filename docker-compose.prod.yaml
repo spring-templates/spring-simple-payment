@@ -7,10 +7,7 @@ x-mysql-template: &mysql-template
     retries: 3
 
 
-# docker compose
-#  --env-file global.env
-#  -f docker-compose.prod.yaml
-# up -d
+# docker compose --env-file global.env -f docker-compose.prod.yaml up -d
 name: service-payment
 services:
   payments:
