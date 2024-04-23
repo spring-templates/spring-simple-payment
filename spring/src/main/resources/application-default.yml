@@ -1,0 +1,22 @@
+#
+# https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html
+#
+
+# default configuration
+# activate profiles may @Overrides these options
+
+# JPA configuration
+spring.jpa:
+  open-in-view: false
+  show-sql: false
+  ## Hibernate native properties
+  properties.hibernate:
+    format-sql: false
+    use_sql_comments: false
+    generate_statistics: false
+    id.new_generator_mappings: false
+
+# DB Initialization Strategy
+spring.jpa.generate-ddl: false
+spring.jpa.hibernate.ddl-auto: update
+spring.sql.init.mode: never

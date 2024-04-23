@@ -1,0 +1,19 @@
+## Docker Compose for Development Environment
+# Initiate the Spring Boot application using the `dev` profile.
+#
+name: dev-payment
+services:
+  db:
+    image: mysql:latest
+    profiles: [ "dev" ]
+    hostname: payment
+    container_name: db-payment-dev
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env.local
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3

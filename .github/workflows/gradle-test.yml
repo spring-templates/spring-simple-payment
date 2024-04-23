@@ -8,6 +8,8 @@ on:
 
 jobs:
   build_and_test_ubuntu:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,11 +26,9 @@ jobs:
           key: gradle-${{ hashFiles('**/*gradle*') }}
           restore-keys: gradle-
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
       - name: Run gradlew test
-        run: ./gradlew test --warning-mode=all
+        run: chmod +x gradlew && ./gradlew test --warning-mode=all
+        working-directory: spring
 
       - name: Upload test coverage to Codecov.io
         uses: codecov/codecov-action@v4
@@ -56,6 +56,8 @@ jobs:
           key: gradle-${{ hashFiles('**/*gradle*') }}
           restore-keys: gradle-
 
+      - name: Docker Compose Up
+        run: docker compose up -d
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
