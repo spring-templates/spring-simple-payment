@@ -13,9 +13,12 @@ spring.profiles:
   active: dev
 
 ## Swagger configuration
+# https://springdoc.org/properties.html
 springdoc:
-  swagger-ui.path: /
   show-actuator: true
+  webjars.prefix: /payments
+  swagger-ui:
+    use-root-path: true
 
 # Database configuration
 spring.datasource:
@@ -23,4 +26,3 @@ spring.datasource:
   username: ${MYSQL_USER:payments}
   password: ${MYSQL_PASSWORD:payments}
   driver-class-name: com.mysql.cj.jdbc.Driver
-
