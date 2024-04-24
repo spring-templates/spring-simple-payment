@@ -8,21 +8,25 @@ x-mysql-template: &mysql-template
 
 
 # docker compose --env-file global.env -f docker-compose.prod.yaml up -d
-name: service-payment
+name: service-payments-prod
 services:
 
   reverse-proxy:
     image: nginx:latest
     container_name: reverse-proxy
-    ports: [ "80:80" ]
+    ports: [ "8080:8080" ]
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      service:
+        condition: service_healthy
 
-  payments:
-    container_name: service-payment
+  service:
     build:
       context: .
       dockerfile: spring/Dockerfile
+    hostname: payments-service
+    container_name: service
     expose: [ "80" ]
     environment:
       SERVER_PORT: 80
@@ -32,20 +36,18 @@ services:
       MYSQL_USER: ${PAYMENT_MYSQL_USER:?error}
       MYSQL_PASSWORD: ${PAYMENT_MYSQL_PASSWORD:?error}
     healthcheck:
-      test: [ "CMD", "wget", "--spider", "-q", "http://localhost:8080/actuator/health" ]
+      test: [ "CMD", "wget", "--spider", "-q", "http://payments-service/actuator/health" ]
       interval: 10s
       timeout: 10s
       retries: 3
     depends_on:
       db:
         condition: service_healthy
-      reverse-proxy:
-        condition: service_started
 
   db:
     <<: *mysql-template
-    hostname: payments
-    container_name: db-payment-prod
+    hostname: payments-db
+    container_name: db
     expose: [ "3306", "33060" ]
     environment:
       MYSQL_ROOT_PASSWORD: ${PAYMENT_MYSQL_ROOT_PASSWORD:?error}
