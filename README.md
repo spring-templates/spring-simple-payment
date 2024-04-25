@@ -25,16 +25,10 @@
 
 ## 팀원 구성
 
-<div style="display: flex; justify-content: center">
-<div>
-
-|                                                            **김현학**                                                             |
+|                                                            **김현학**                                                           |
 |:------------------------------------------------------------------------------------------------------------------------------:| 
 | [<img src="https://avatars.githubusercontent.com/u/96914905?v=4" height=150 width=150> <br/> @oomia](https://github.com/oomia) | 
 
-</div>
-
-</div>
 
 <br>
 
@@ -45,11 +39,11 @@
 - 서비스 배포 환경 :
 -
 
-디자인 : [Figma](https://www.figma.com/file/fAisC2pEKzxTOzet9CfqML/README(oh-my-code)?node-id=39%3A1814)
+디자인
 
-- [커밋 컨벤션](https://github.com/likelion-project-README/README/wiki/%EC%BB%A4%EB%B0%8B-%EC%BB%A8%EB%B2%A4%EC%85%98)
-- [코드 컨벤션](https://github.com/likelion-project-README/README/wiki/%EC%BD%94%EB%93%9C-%EC%BB%A8%EB%B2%A4%EC%85%98)
-- [스프라이트](https://github.com/likelion-project-README/README/wiki/%EC%8A%A4%ED%94%84%EB%9D%BC%EC%9D%B4%ED%8A%B8)
+- [커밋 컨벤션]
+- [코드 컨벤션]
+- [스프라이트]
   <br>
 
 ## 2. 채택한 개발 기술과 브랜치 전략
