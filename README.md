@@ -2,8 +2,6 @@
 
 ![image](https://github.com/spring-templates/spring-simple-payment/assets/96914905/99eb3687-37e5-4960-8bf7-78a519f0661f)
 
-
-
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-ED8B00?logoColor=white)
 ![Gradle](https://img.shields.io/badge/Gradle-02303A?logo=gradle&logoColor=white)
@@ -14,9 +12,8 @@
 
 [![codecov](https://codecov.io/gh/spring-templates/spring-simple-payment/graph/badge.svg?token=tGi5xmvIhW)](https://codecov.io/gh/spring-templates/spring-simple-payment)
 
-- 배포 URL :
-- Test ID : readme@test.com
-- Test PW : 123123
+- 배포 URL : [AWS EC2](https://shorturl.at/iqIV4)
+
 
 <br>
 
@@ -179,9 +176,7 @@ spring-simple-payment
 
 ### 개발 기간
 
-- 전체 개발 기간 : 2022-12-09 ~ 2022-12-31
-- UI 구현 : 2022-12-09 ~ 2022-12-16
-- 기능 구현 : 2022-12-17 ~ 2022-12-31
+- 전체 개발 기간 : 
 
 <br>
 
@@ -192,9 +187,7 @@ spring-simple-payment
 
 ## 6. 신경 쓴 부분
 
-- [접근제한 설정](https://github.com/likelion-project-README/README/wiki/README-6.%EC%8B%A0%EA%B2%BD-%EC%93%B4-%EB%B6%80%EB%B6%84_%EC%A0%91%EA%B7%BC%EC%A0%9C%ED%95%9C-%EC%84%A4%EC%A0%95)
-
-- [Recoil을 통한 상태관리 및 유지](https://github.com/likelion-project-README/README/wiki/README-6.%EC%8B%A0%EA%B2%BD-%EC%93%B4-%EB%B6%80%EB%B6%84_Recoil%EC%9D%84-%ED%86%B5%ED%95%9C-%EC%83%81%ED%83%9C%EA%B4%80%EB%A6%AC-%EB%B0%8F-%EC%9C%A0%EC%A7%80)
+- 링크
 
 <br>
 
@@ -206,7 +199,7 @@ spring-simple-payment
 
 | 초기화면                                                                                                              |
 |-------------------------------------------------------------------------------------------------------------------|
-| ![splash](https://user-images.githubusercontent.com/112460466/210172920-aef402ed-5aef-4d4a-94b9-2b7147fd8389.gif) |
+| gif |
 
 <br>
 
@@ -214,23 +207,13 @@ spring-simple-payment
 
 ## 8. 트러블 슈팅
 
-- [탭메뉴 프로필 버튼 이슈](https://github.com/likelion-project-README/README/wiki/README-8.%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_%ED%83%AD%EB%A9%94%EB%89%B4-%ED%94%84%EB%A1%9C%ED%95%84-%EB%B2%84%ED%8A%BC-%EC%9D%B4%EC%8A%88)
-
-- [프로필 수정 이슈](https://github.com/likelion-project-README/README/wiki/README-8.%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_%ED%94%84%EB%A1%9C%ED%95%84-%EC%88%98%EC%A0%95-%EC%9D%B4%EC%8A%88)
+- 링크
 
 <br>
 
 ## 9. 개선 목표
 
-- (원인)
-
-  ![KakaoTalk_Photo_2023-01-04-16-55-30](https://user-images.githubusercontent.com/112460466/210591134-09bf8efd-3c34-4b99-a3d7-895ca99e1457.png)
-
-- **2023/01/17 성능 개선 내용**
-
-  ![성능개선 후](https://user-images.githubusercontent.com/106502312/212872369-7ceeb2cf-d551-41d2-bfb0-01e35e9903fe.png)
-
-  - (개선 내용 요약)
+- 문제 -> 할 일 -> 결과 
 
 <br>
 
