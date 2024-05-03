@@ -12,7 +12,7 @@
 
 [![codecov](https://codecov.io/gh/spring-templates/spring-simple-payment/graph/badge.svg?token=tGi5xmvIhW)](https://codecov.io/gh/spring-templates/spring-simple-payment)
 
-- 배포 URL : [AWS EC2](https://shorturl.at/iqIV4)
+- 배포 URL : [AWS EC2](http://payment.oomia.click:8080)
 
 
 <br>
