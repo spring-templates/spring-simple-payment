@@ -8,21 +8,32 @@ x-mysql-template: &mysql-template
 
 
 # docker compose --env-file global.env -f docker-compose.prod.yaml up -d
-name: service-payment
+name: service-payments-prod
 services:
-  payments:
-    container_name: service-payment
-    image: oomia/spring-simple-payment
+  reverse-proxy:
+    image: nginx:latest
+    container_name: reverse-proxy
     ports: [ "8080:8080" ]
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      service:
+        condition: service_healthy
+
+  service:
+    image: oomia/spring-simple-payment
+    hostname: payments-service
+    container_name: service
+    expose: [ "80" ]
     environment:
+      SERVER_PORT: 80
       MYSQL_SERVER: ${PAYMENT_MYSQL_HOSTNAME:?error}
       MYSQL_ROOT_PASSWORD: ${PAYMENT_MYSQL_ROOT_PASSWORD:?error}
       MYSQL_DATABASE: ${PAYMENT_MYSQL_DATABASE:?error}
       MYSQL_USER: ${PAYMENT_MYSQL_USER:?error}
       MYSQL_PASSWORD: ${PAYMENT_MYSQL_PASSWORD:?error}
-    networks: [ private-subnet ]
     healthcheck:
-      test: [ "CMD", "wget", "--spider", "-q", "http://localhost:8080/actuator/health" ]
+      test: [ "CMD", "wget", "--spider", "-q", "http://payments-service/actuator/health" ]
       interval: 10s
       timeout: 10s
       retries: 3
@@ -32,31 +43,11 @@ services:
 
   db:
     <<: *mysql-template
-    hostname: payments
-    container_name: db-payment-prod
+    hostname: payments-db
+    container_name: db
     expose: [ "3306", "33060" ]
     environment:
       MYSQL_ROOT_PASSWORD: ${PAYMENT_MYSQL_ROOT_PASSWORD:?error}
       MYSQL_DATABASE: ${PAYMENT_MYSQL_DATABASE:?error}
       MYSQL_USER: ${PAYMENT_MYSQL_USER:?error}
       MYSQL_PASSWORD: ${PAYMENT_MYSQL_PASSWORD:?error}
-    networks: [ private-subnet ]
-
-  reverse-proxy:
-    image: nginx:latest
-    container_name: reverse-proxy
-    ports: [ "80:80" ]
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    networks: [ private-subnet ]
-    depends_on:
-      payments:
-        condition: service_healthy
-
-networks:
-  private-subnet: # private: 172.19.0.x
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.19.0.0/24
