@@ -10,7 +10,6 @@ x-mysql-template: &mysql-template
 # docker compose --env-file global.env -f docker-compose.prod.yaml up -d
 name: service-payments-prod
 services:
-
   reverse-proxy:
     image: nginx:latest
     container_name: reverse-proxy
@@ -22,9 +21,7 @@ services:
         condition: service_healthy
 
   service:
-    build:
-      context: .
-      dockerfile: spring/Dockerfile
+    image: oomia/spring-simple-payment
     hostname: payments-service
     container_name: service
     expose: [ "80" ]
