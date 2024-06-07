@@ -12,9 +12,7 @@ name: service-payment
 services:
   payments:
     container_name: service-payment
-    build:
-      context: .
-      dockerfile: spring/Dockerfile
+    image: oomia/spring-simple-payment
     ports: [ "8080:8080" ]
     environment:
       MYSQL_SERVER: ${PAYMENT_MYSQL_HOSTNAME:?error}
