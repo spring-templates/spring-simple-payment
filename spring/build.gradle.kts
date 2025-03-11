@@ -1,15 +1,22 @@
 plugins {
-    java
-    jacoco
-    id("org.springframework.boot") version "3.2.4"
-    id("io.spring.dependency-management") version "1.1.4"
+  java
+  jacoco
+  id("org.springframework.boot") version "3.5.0-M2"
+  id("io.spring.dependency-management") version "1.1.7"
 }
 
 group = "com.service"
 version = "1.0.0-SNAPSHOT"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(23)
+  }
+}
+
+repositories {
+  mavenCentral()
+  maven { url = uri("https://repo.spring.io/milestone") }
 }
 
 configurations {
@@ -18,14 +25,10 @@ configurations {
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
 @Suppress("SpellCheckingInspection") dependencies {
     // spring-service-payment
     implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.5.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.5")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")

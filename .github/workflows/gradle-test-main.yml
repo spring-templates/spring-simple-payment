@@ -9,13 +9,13 @@ jobs:
   build_test_and_coverage:
     permissions:
       contents: write
-    runs-on: 'ubuntu-latest'
+    runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
-          distribution: 'liberica'
-          java-version: '21'
+          distribution: "liberica"
+          java-version: "21"
       - uses: actions/cache@v4
         with:
           path: ~/.gradle/caches
@@ -33,4 +33,4 @@ jobs:
           slug: ${{ github.repository }}
           fail_ci_if_error: true
           verbose: true
-          flags: 'integration'
+          flags: "integration"

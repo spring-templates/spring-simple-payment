@@ -30,7 +30,7 @@ spring.datasource:
 
 # Docker configuration
 spring.docker.compose:
-  file: spring/docker-compose.dev.yaml
+  file: docker-compose.dev.yaml
   profiles.active: dev
 
 # Logging configuration

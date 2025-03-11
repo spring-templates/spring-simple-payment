@@ -16,8 +16,8 @@ spring.profiles:
 # https://springdoc.org/properties.html
 springdoc:
   show-actuator: true
-  webjars.prefix: /payments
-  swagger-ui.path: /
+  swagger-ui:
+    use-root-path: true
 
 # Database configuration
 spring.datasource:

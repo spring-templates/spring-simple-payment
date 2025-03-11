@@ -14,7 +14,6 @@
 
 - 배포 URL : [AWS EC2](http://payment.oomia.click:8080)
 
-
 <br>
 
 ## 프로젝트 소개
@@ -25,10 +24,9 @@
 
 ## 팀원 구성
 
-|                                                            **김현학**                                                           |
-|:------------------------------------------------------------------------------------------------------------------------------:| 
-| [<img src="https://avatars.githubusercontent.com/u/96914905?v=4" height=150 width=150> <br/> @oomia](https://github.com/oomia) | 
-
+|                                                           **김현학**                                                           |
+| :----------------------------------------------------------------------------------------------------------------------------: |
+| [<img src="https://avatars.githubusercontent.com/u/96914905?v=4" height=150 width=150> <br/> @oomia](https://github.com/oomia) |
 
 <br>
 
@@ -69,20 +67,20 @@ spring-simple-payment
 │  docker-compose.prod.yaml
 │  docker-compose.yaml
 │  README.md
-│  
+│
 ├─.github
 │  │  PULL_REQUEST_TEMPLATE.md
-│  │  
+│  │
 │  ├─ISSUE_TEMPLATE
 │  │      bug_report.md
 │  │      custom.md
 │  │      feature_request.md
-│  │      
+│  │
 │  └─workflows
 │          docker-publish.yml
 │          gradle-test-main.yml
 │          gradle-test.yml
-│      
+│
 └─spring
     │  .dockerignore
     │  .gitignore
@@ -97,12 +95,12 @@ spring-simple-payment
     │  LICENSE
     │  settings.gradle.kts
     │  SunStyle_edited.xml
-    │  
+    │
     ├─gradle
     │  └─wrapper
     │          gradle-wrapper.jar
     │          gradle-wrapper.properties
-    │          
+    │
     └─src
         ├─main
         │  ├─java
@@ -110,35 +108,35 @@ spring-simple-payment
         │  │      └─service
         │  │          │  package-info.java
         │  │          │  PaymentServiceApplication.java
-        │  │          │  
+        │  │          │
         │  │          ├─customer
         │  │          │  │  CustomerRequestDto.java
         │  │          │  │  package-info.java
-        │  │          │  │  
+        │  │          │  │
         │  │          │  └─entity
         │  │          │          Customer.java
         │  │          │          Email.java
         │  │          │          Name.java
         │  │          │          package-info.java
-        │  │          │          
+        │  │          │
         │  │          └─payment
         │  │              │  package-info.java
         │  │              │  PaymentController.java
         │  │              │  PaymentRepository.java
         │  │              │  PaymentService.java
         │  │              │  PaymentServiceImpl.java
-        │  │              │  
+        │  │              │
         │  │              ├─dto
         │  │              │      package-info.java
         │  │              │      PaymentInitialRequestDto.java
         │  │              │      PaymentStatus.java
         │  │              │      PaymentStatusDto.java
-        │  │              │      
+        │  │              │
         │  │              └─entity
         │  │                      AbstractPayment.java
         │  │                      package-info.java
         │  │                      Payment.java
-        │  │                      
+        │  │
         │  └─resources
         │          application-default.yml
         │          application-dev.yml
@@ -147,7 +145,7 @@ spring-simple-payment
         │          application.yml
         │          data.sql
         │          schema.sql
-        │          
+        │
         └─test
             └─java
                 └─com
@@ -170,7 +168,7 @@ spring-simple-payment
 
 ### 개발 기간
 
-- 전체 개발 기간 : 
+- 전체 개발 기간 :
 
 <br>
 
@@ -191,9 +189,9 @@ spring-simple-payment
 
 - DESCRITPION : README 서비스의 초기화면입니다.
 
-| 초기화면                                                                                                              |
-|-------------------------------------------------------------------------------------------------------------------|
-| gif |
+| 초기화면 |
+| -------- |
+| gif      |
 
 <br>
 
@@ -207,7 +205,7 @@ spring-simple-payment
 
 ## 9. 개선 목표
 
-- 문제 -> 할 일 -> 결과 
+- 문제 -> 할 일 -> 결과
 
 <br>
 
@@ -216,4 +214,3 @@ spring-simple-payment
 ### 🍊 이름
 
 - 후기
-

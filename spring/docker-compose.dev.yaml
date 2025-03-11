@@ -5,7 +5,7 @@ name: dev-payment
 services:
   db:
     image: mysql:latest
-    profiles: [ "dev" ]
+    profiles: ["dev"]
     hostname: payment
     container_name: db-payment-dev
     ports:
@@ -13,7 +13,7 @@ services:
     env_file:
       - .env.local
     healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
       timeout: 10s
       retries: 3
